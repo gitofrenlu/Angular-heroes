@@ -6,16 +6,32 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './heroDetail/heroDetail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './InMemoryData.service';
 
 @NgModule({
    declarations: [
       AppComponent,
       HeroesComponent,
-      HeroDetailComponent
+      HeroDetailComponent,
+      MessagesComponent,
+      DashboardComponent,
+      HeroSearchComponent
    ],
    imports: [
       BrowserModule,
-      FormsModule
+      FormsModule,
+      AppRoutingModule,
+      HttpClientModule,
+      HttpClientInMemoryWebApiModule.forRoot(
+         InMemoryDataService, {dataEncapsulation: false}
+      )
    ],
    providers: [],
    bootstrap: [
